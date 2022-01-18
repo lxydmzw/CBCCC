@@ -1,0 +1,423 @@
+{
+    "type": "Scene",
+    "props": {
+        "width": 1334,
+        "height": 750
+    },
+    "compId": 2,
+    "child": [
+        {
+            "type": "Image",
+            "props": {
+                "width": 400,
+                "skin": "game/btn_here_we_go_off.png",
+                "runtime": "layaui/ButtonClick.ts",
+                "name": "btn_here_we_go_off",
+                "label": "label",
+                "height": 160,
+                "centerX": 0,
+                "bottom": 201,
+                "anchorY": 0.5,
+                "anchorX": 0.5
+            },
+            "compId": 8
+        },
+        {
+            "type": "Script",
+            "props": {
+                "btn_end": "@node:8",
+                "runtime": "layaui/FailPage.ts"
+            },
+            "compId": 9
+        }
+    ],
+    "animations": [
+        {
+            "nodes": [
+                {
+                    "target": 7,
+                    "keyframes": {
+                        "y": [
+                            {
+                                "value": 153,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "y",
+                                "index": 0
+                            }
+                        ],
+                        "x": [
+                            {
+                                "value": -458,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "x",
+                                "index": 0
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "x",
+                                "index": 12
+                            }
+                        ],
+                        "alpha": [
+                            {
+                                "value": 0,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "alpha",
+                                "index": 0
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "alpha",
+                                "index": 12
+                            }
+                        ]
+                    }
+                },
+                {
+                    "target": 11,
+                    "keyframes": {
+                        "y": [
+                            {
+                                "value": 229,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "y",
+                                "index": 0
+                            },
+                            {
+                                "value": 231,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "y",
+                                "index": 17
+                            }
+                        ],
+                        "x": [
+                            {
+                                "value": 375,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "x",
+                                "index": 0
+                            },
+                            {
+                                "value": 375,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "x",
+                                "index": 17
+                            },
+                            {
+                                "value": 375,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "x",
+                                "index": 20
+                            }
+                        ],
+                        "scaleY": [
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleY",
+                                "index": 0
+                            },
+                            {
+                                "value": 1.1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleY",
+                                "index": 17
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleY",
+                                "index": 20
+                            }
+                        ],
+                        "scaleX": [
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleX",
+                                "index": 0
+                            },
+                            {
+                                "value": 1.1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleX",
+                                "index": 17
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleX",
+                                "index": 20
+                            }
+                        ],
+                        "alpha": [
+                            {
+                                "value": 0,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "alpha",
+                                "index": 0
+                            },
+                            {
+                                "value": 0,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "alpha",
+                                "index": 17
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "alpha",
+                                "index": 20
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "failure",
+            "id": 1,
+            "frameRate": 24,
+            "action": 0
+        },
+        {
+            "nodes": [
+                {
+                    "target": 7,
+                    "keyframes": {
+                        "y": [
+                            {
+                                "value": 153,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "y",
+                                "index": 0
+                            }
+                        ],
+                        "x": [
+                            {
+                                "value": -458,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "x",
+                                "index": 0
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "x",
+                                "index": 12
+                            }
+                        ],
+                        "alpha": [
+                            {
+                                "value": 0,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "alpha",
+                                "index": 0
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 7,
+                                "key": "alpha",
+                                "index": 12
+                            }
+                        ]
+                    }
+                },
+                {
+                    "target": 11,
+                    "keyframes": {
+                        "y": [
+                            {
+                                "value": 229,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "y",
+                                "index": 0
+                            },
+                            {
+                                "value": 231,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "y",
+                                "index": 17
+                            }
+                        ],
+                        "x": [
+                            {
+                                "value": 375,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "x",
+                                "index": 0
+                            },
+                            {
+                                "value": 375,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "x",
+                                "index": 17
+                            },
+                            {
+                                "value": 375,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "x",
+                                "index": 20
+                            }
+                        ],
+                        "skin": [
+                            {
+                                "value": "game/logo.png",
+                                "tweenMethod": "linearNone",
+                                "tween": false,
+                                "target": 11,
+                                "key": "skin",
+                                "index": 0
+                            }
+                        ],
+                        "scaleY": [
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleY",
+                                "index": 0
+                            },
+                            {
+                                "value": 1.1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleY",
+                                "index": 17
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleY",
+                                "index": 20
+                            }
+                        ],
+                        "scaleX": [
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleX",
+                                "index": 0
+                            },
+                            {
+                                "value": 1.1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleX",
+                                "index": 17
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "scaleX",
+                                "index": 20
+                            }
+                        ],
+                        "alpha": [
+                            {
+                                "value": 0,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "alpha",
+                                "index": 0
+                            },
+                            {
+                                "value": 0,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "alpha",
+                                "index": 17
+                            },
+                            {
+                                "value": 1,
+                                "tweenMethod": "linearNone",
+                                "tween": true,
+                                "target": 11,
+                                "key": "alpha",
+                                "index": 20
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "win",
+            "id": 1,
+            "frameRate": 24,
+            "action": 0
+        }
+    ],
+    "loadList": [
+        "game/btn_here_we_go_off.png",
+        "game/logo.png"
+    ],
+    "loadList3D": []
+}

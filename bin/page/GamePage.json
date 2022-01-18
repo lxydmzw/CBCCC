@@ -1,0 +1,103 @@
+{
+    "type": "Scene",
+    "props": {
+        "width": 1334,
+        "height": 750
+    },
+    "compId": 2,
+    "child": [
+        {
+            "type": "Script",
+            "props": {
+                "progress": "@node:10",
+                "lable_stage": "@node:9",
+                "runtime": "layaui/GamePage.ts"
+            },
+            "compId": 3
+        },
+        {
+            "type": "Box",
+            "props": {
+                "y": 35,
+                "name": "top",
+                "centerX": 0
+            },
+            "compId": 11,
+            "child": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "y": 8,
+                        "x": 97,
+                        "skin": "game/progress_bar_level.png",
+                        "name": "progress_bar_level"
+                    },
+                    "compId": 6
+                },
+                {
+                    "type": "Image",
+                    "props": {
+                        "skin": "game/game_progress_bar_3.png",
+                        "name": "game_progress_bar_3"
+                    },
+                    "compId": 7,
+                    "child": [
+                        {
+                            "type": "FontClip",
+                            "props": {
+                                "y": 21,
+                                "x": 15,
+                                "width": 74,
+                                "value": "6",
+                                "skin": "game/num.png",
+                                "sheet": "0123456789",
+                                "scaleY": 0.7,
+                                "scaleX": 0.7,
+                                "height": 53,
+                                "align": "center"
+                            },
+                            "compId": 9
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "props": {
+                        "x": 565,
+                        "skin": "game/game_progress_bar_4.png",
+                        "name": "game_progress_bar_4"
+                    },
+                    "compId": 8
+                },
+                {
+                    "type": "Panel",
+                    "props": {
+                        "y": 13,
+                        "x": 106,
+                        "width": 435,
+                        "height": 100
+                    },
+                    "compId": 10,
+                    "child": [
+                        {
+                            "type": "Image",
+                            "props": {
+                                "skin": "game/progress_bar_level_1.png",
+                                "name": "progress_bar_level_1"
+                            },
+                            "compId": 5
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "loadList": [
+        "game/progress_bar_level.png",
+        "game/game_progress_bar_3.png",
+        "game/num.png",
+        "game/game_progress_bar_4.png",
+        "game/progress_bar_level_1.png"
+    ],
+    "loadList3D": []
+}

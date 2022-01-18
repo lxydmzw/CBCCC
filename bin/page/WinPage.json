@@ -1,0 +1,38 @@
+{
+    "type": "Scene",
+    "props": {
+        "width": 1334,
+        "height": 750
+    },
+    "compId": 2,
+    "child": [
+        {
+            "type": "Image",
+            "props": {
+                "width": 400,
+                "skin": "game/btn_next.png",
+                "runtime": "layaui/ButtonClick.ts",
+                "name": "btn_draw",
+                "label": "label",
+                "height": 160,
+                "centerX": 0,
+                "bottom": 201,
+                "anchorY": 0.5,
+                "anchorX": 0.5
+            },
+            "compId": 7
+        },
+        {
+            "type": "Script",
+            "props": {
+                "btn_end": "@node:7",
+                "runtime": "layaui/WinPage.ts"
+            },
+            "compId": 13
+        }
+    ],
+    "loadList": [
+        "game/btn_next.png"
+    ],
+    "loadList3D": []
+}

@@ -1,0 +1,36 @@
+{
+    "type": "Scene",
+    "props": {
+        "width": 1334,
+        "height": 750
+    },
+    "compId": 2,
+    "child": [
+        {
+            "type": "Image",
+            "props": {
+                "y": -11,
+                "x": 91,
+                "skin": "game/failure.png",
+                "name": "failure"
+            },
+            "compId": 7
+        },
+        {
+            "type": "Image",
+            "props": {
+                "y": 883,
+                "x": 175,
+                "skin": "game/btn_here_we_go_off.png",
+                "name": "btn_here_we_go_off",
+                "label": "label"
+            },
+            "compId": 8
+        }
+    ],
+    "loadList": [
+        "game/failure.png",
+        "game/btn_here_we_go_off.png"
+    ],
+    "loadList3D": []
+}
