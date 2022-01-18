@@ -128,6 +128,7 @@ t.zs_version = 0,
     t.zs_native_slide_switch = 0,
     t.zs_banner_native_switch = 0,
     t.zs_banner_native_time = 0;
+
 class r extends Laya.Script {
     onEnable() {
         let e = this.owner;
@@ -198,10 +199,6 @@ class i extends Laya.Script {
     }
 }
 class a extends Laya.Script {
-    constructor() {
-        super(...arguments),
-            this.isStayStartSence=true;
-    }
     onEnable() {
         let e = this.owner;
         this.exitDialogShow = false;
@@ -211,9 +208,7 @@ class a extends Laya.Script {
             this.owner.scene.getChildAt(1).visible = false;
         var startGameBtn = new Laya.Image("res/start.png");
         startGameBtn.pos(e.width - 105 >> 1, e.height / 4 * 3);//105是按钮的宽度
-        startGameBtn.focus = true;
         e.addChild(startGameBtn);
-        startGameBtn.on(Laya.Event.KEY_UP, this, this.onKeyUp);
         n.PlayerInfo_save()
         a.showTipDialogTimes = Laya.LocalStorage.getItem("remainTipTimes");//操作提示框展示次数（3次后不再展示）
         if (a.showTipDialogTimes == null) {
@@ -284,30 +279,38 @@ class a extends Laya.Script {
                 case 13:
                 case 23:
                 case 66://回车键
-                    if (a.showTipDialogTimes > 0) {
-                        a.showTipDialogTimes--;
-                        Laya.LocalStorage.setItem("remainTipTimes", a.showTipDialogTimes);
-                        if (window["PlatformClass"] != null) {
-                            let platform = window["PlatformClass"].createClass('cn.popapps.game.JSBridge');
-                            platform.callWithBack(function (value) {
-                                //回调
-                                this.isStayStartSence=false;
-                                zs.core.workflow.next();
-                            }, "migu");
-
-                        } else {
-                            console.log("NO Platform");
-                        }
-                    } else {
-                        zs.core.workflow.next();
+                    if(a.aGameStart){
+                        Laya.timer.once(500,this,()=>{
+                            a.aGameStart=false;
+                        });
+                        return;
                     }
-
+                    if (this.isTipShow) {
+                        this.tipDialog.close();
+                        this.isTipShow = false;
+                        zs.core.workflow.next();
+                    } else {
+                        if (a.showTipDialogTimes > 0) {
+                            a.showTipDialogTimes--;
+                            Laya.LocalStorage.setItem("remainTipTimes", a.showTipDialogTimes);
+                            this.tipDialog = new Laya.Dialog();
+                            var bg = new Laya.Image("res/play_tips.png");
+                            bg.scaleX = 0.5;
+                            bg.scaleY = 0.5;
+                            this.tipDialog.addChild(bg);
+                            this.tipDialog.popup();
+                            this.isTipShow = true;
+                        } else {
+                            zs.core.workflow.next();
+                        }
+                    }
                     break;
             }
         }
     }
 
 }
+a.aGameStart=false;
 class o extends zs.ui.LayaLoading {
     static preload() {
         return new Promise((e, t) => {
@@ -406,25 +409,28 @@ class _ extends Laya.Script {
     }
     onKeyDown(e) {
         var code = e.keyCode;
-        if (code == 13 || code == 23 || code == 66) {//回车键
-            if (!(this.clickTimer > 0)) {
-                if (this.r) {
-                    this.clickCount++,
-                        !zs.platform.sync.hasBanner() && zs.platform.sync.updateBanner({
-                            isWait: !0,
-                            checkInit: !0
-                        }),
-                        this.clickCount >= this.t && !this.isOpenAd && (this.isOpenAd = !0,
-                            zs.platform.sync.showBanner(),
-                            Laya.Tween.to(this.btn_click, {
-                                y: this.btn_click.y - 240
-                            }, 500))
+        switch (e.keyCode) {
+            case 13:
+            case 23:
+            case 66:
+                if (!(this.clickTimer > 0)) {
+                    if (this.r) {
+                        this.clickCount++,
+                            !zs.platform.sync.hasBanner() && zs.platform.sync.updateBanner({
+                                isWait: !0,
+                                checkInit: !0
+                            }),
+                            this.clickCount >= this.t && !this.isOpenAd && (this.isOpenAd = !0,
+                                zs.platform.sync.showBanner(),
+                                Laya.Tween.to(this.btn_click, {
+                                    y: this.btn_click.y - 240
+                                }, 500))
+                    }
+                    this.clickTimer = 150,
+                        Laya.stage.event(l.FlyOnePen)
                 }
-                this.clickTimer = 150,
-                    Laya.stage.event(l.FlyOnePen)
-            }
+                break;
         }
-
     }
     onUpdate() {
         this.clickTimer -= Laya.timer.delta
@@ -1025,9 +1031,6 @@ class P extends Laya.Script3D {
     }
 
     onKeyUp(e) {
-        if(a.isStayStartSence){
-            return;
-        }
         if (this.toMenuDialogShow) {//正在游戏中，弹出返回窗
             switch (e.keyCode) {
                 case 37:
@@ -1065,9 +1068,6 @@ class P extends Laya.Script3D {
     }
 
     onKeyDown(e) {
-        if(a.isStayStartSence){
-            return;
-        }
         if (!this.toMenuDialogShow) {//正在游戏中，未弹返回窗
             switch (e.keyCode) {
                 case 37:
@@ -1091,7 +1091,9 @@ class P extends Laya.Script3D {
                 case 13:
                 case 23:
                 case 66://回车
+                console.log(">--1100");
                     if (this.isEnd && !n.isWin) {
+                        a.aGameStart=true;
                         zs.core.workflow.next();
                     }
                     break;
