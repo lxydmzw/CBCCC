@@ -210,11 +210,10 @@ class a extends Laya.Script {
         startGameBtn.pos(e.width - 105 >> 1, e.height / 4 * 3);//105是按钮的宽度
         e.addChild(startGameBtn);
         n.PlayerInfo_save()
-        a.showTipDialogTimes = Laya.LocalStorage.getItem("remainTipTimes");//操作提示框展示次数（3次后不再展示）
-        if (a.showTipDialogTimes == null) {
-            a.showTipDialogTimes = 3;
-            Laya.LocalStorage.setItem("remainTipTimes", a.showTipDialogTimes);
-
+        var aTime= Laya.LocalStorage.getItem("remainTipTimes");//操作提示框展示次数（3次后不再展示）
+        console.log(">--214"+aTime);
+        if (aTime == null) {
+            Laya.LocalStorage.setItem("remainTipTimes", "3");
         }
     }
     hideExitDialog() {
@@ -290,19 +289,27 @@ class a extends Laya.Script {
                         this.isTipShow = false;
                         zs.core.workflow.next();
                     } else {
-                        if (a.showTipDialogTimes > 0) {
-                            a.showTipDialogTimes--;
-                            Laya.LocalStorage.setItem("remainTipTimes", a.showTipDialogTimes);
-                            this.tipDialog = new Laya.Dialog();
-                            var bg = new Laya.Image("res/play_tips.png");
-                            bg.scaleX = 0.5;
-                            bg.scaleY = 0.5;
-                            this.tipDialog.addChild(bg);
-                            this.tipDialog.popup();
-                            this.isTipShow = true;
-                        } else {
+                        var aTimeStr= Laya.LocalStorage.getItem("remainTipTimes");
+                        console.log(">--292"+aTimeStr);
+                        if(aTimeStr!=null){
+                            var aTime=parseInt(aTimeStr);
+                            if (aTime > 0) {
+                                aTime--;
+                                Laya.LocalStorage.setItem("remainTipTimes", aTime.toString());
+                                this.tipDialog = new Laya.Dialog();
+                                var bg = new Laya.Image("res/play_tips.png");
+                                bg.scaleX = 0.5;
+                                bg.scaleY = 0.5;
+                                this.tipDialog.addChild(bg);
+                                this.tipDialog.popup();
+                                this.isTipShow = true;
+                            } else {
+                                zs.core.workflow.next();
+                            }
+                        }else{
                             zs.core.workflow.next();
                         }
+                        
                     }
                     break;
             }
@@ -928,10 +935,10 @@ class R extends Laya.Script3D {
             this.gameObject.transform.position.cloneTo(this.lastPosition),
             this.animator = this.gameObject.getChildByName("role").getComponent(Laya.Animator),
             this.animator.play("run", 0, 0);
-        let e = this.gameObject.getChildByName("Trail");
-        e.transform.localPosition.y += .1 * Math.random(),
-            e.transform.localPosition = e.transform.localPosition,
-            this.trail = e;
+        // let e = this.gameObject.getChildByName("Trail");
+        // e.transform.localPosition.y += .1 * Math.random(),
+        //     e.transform.localPosition = e.transform.localPosition,
+        //     this.trail = e;
         let t = Laya.Color.RED
             , r = "3dres/Conventional/Assets/Scenes/Materials/mat_role 1.lmat"
             , n = "3dres/Conventional/Assets/Scenes/Materials/mat_colorpen_blue.lmat";
@@ -969,9 +976,9 @@ class R extends Laya.Script3D {
                 this.mat_pen = e,
                     this.gameObject.getChildByName("role").getChildByName("Bone001").getChildByName("mod_colorpen").meshRenderer.material = e
             }
-            )),
-            e.trailFilter.colorGradient.updateColorRGB(0, 0, t),
-            e.trailFilter.colorGradient.updateColorRGB(1, 1, t)
+            ))
+            // e.trailFilter.colorGradient.updateColorRGB(0, 0, t),
+            // e.trailFilter.colorGradient.updateColorRGB(1, 1, t)
     }
     onUpdate() {
         if (!this.isBePicked)
