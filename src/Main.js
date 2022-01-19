@@ -379,6 +379,7 @@ class s extends Laya.Script {
             case 23:
             case 66:
                 //回车键
+                a.aGameStart=true;
                 ++n.playerInfo.stageId,
                     zs.core.workflow.next()
                 break;
@@ -1091,7 +1092,6 @@ class P extends Laya.Script3D {
                 case 13:
                 case 23:
                 case 66://回车
-                console.log(">--1100");
                     if (this.isEnd && !n.isWin) {
                         a.aGameStart=true;
                         zs.core.workflow.next();
